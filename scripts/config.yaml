@@ -1,0 +1,12 @@
+logging:
+file: logs/m122.log
+api:
+nba:
+	url: https://api-nba-v1.p.rapidapi.com/seasons
+properties:
+smtp:
+host: smtp.gmail.com
+user: test
+password: test
+ftp:
+host: floriangubler.bplaced.net
