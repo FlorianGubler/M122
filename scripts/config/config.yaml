@@ -1,17 +1,16 @@
 logging:
-	file: log/m122.log
+  file: logs/m122.log
 api:
-	nba:
-		url: https://api-nba-v1.p.rapidapi.com/seasons
-	football:
-		url: https://api-football-v1.p.rapidapi.com/v3/players/topscorers
-		properties:
-			league: 39
-	key: 067f9bd1aemsh0e4a61e4cfc7512p1aed22jsndbca7644ec32
-
+  nba:
+    url: https://api-nba-v1.p.rapidapi.com/seasons
+  football:
+    url: https://api-football-v1.p.rapidapi.com/v3/players/topscorers
+    properties:
+    league: 39
+    key: 067f9bd1aemsh0e4a61e4cfc7512p1aed22jsndbca7644ec
 smtp:
-	host: smtp.gmail.com
-	user: test
-	password: test
+  host: smtp.gmail.com
+  user: test
+  password: test
 ftp:
-	host: floriangubler.bplaced.net
+  host: floriangubler.bplaced.net
