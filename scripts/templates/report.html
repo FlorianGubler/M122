@@ -3,6 +3,9 @@ table, th, td{
   border: 1px solid black; 
   border-collapse: collapse;
 }
+th{
+  font-weight: bold;
+}
 </style>
 <h1>Sport Report (NBA & Football)</h1>
 <h2>Football Top Scorer</h2>
@@ -13,9 +16,9 @@ table, th, td{
     <th>Score Count</th>
   </tr>
   <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Real Madrid</td>
-    <td>67</td>
+    <td>%%FOOT_NAME%%</td>
+    <td>%%FOOT_CLUB%%</td>
+    <td>%%FOOT_COUNT%%</td>
   </tr>
 </table>
 <h2>NBA Top Scrorer</h2>
@@ -26,8 +29,8 @@ table, th, td{
     <th>Score Count</th>
   </tr>
   <tr>
-    <td>Laurent Romer</td>
-    <td>Boston Celtics</td>
-    <td>89</td>
+    <td>%%NBA_NAME%%</td>
+    <td>%%NBA_CLUB%%</td>
+    <td>%%NBA_COUNT%%</td>
   </tr>
 </table>
