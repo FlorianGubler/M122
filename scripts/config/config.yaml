@@ -15,3 +15,6 @@ smtp:
   password: test
 ftp:
   host: floriangubler.bplaced.net
+pdf:
+  template: templates/report.html
+  tmpfile: tmp/report.pdf
