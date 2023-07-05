@@ -1,23 +1,32 @@
-import requestsimport yaml
+#!/usr/bin/python3
 import logging
+import modules.config
+import modules.api.nba
+import modules.api.football
 
 # Variables
-CONFIG_PATH = "./config/config.yaml"
 LOG_LEVEL = logging.INFO
 
-# Functions
-def loadconfig():
-	 with open(CONFIG_PATH,"r") as stream:
-		try:
-			 return yaml.safe_load(stream)
- 		except yaml.YAMLError as exc:
-		            print(exc)
 # Configuration
-##LoadConfig
-CONFIG = loadconfig()
+## LoadConfig
+CONFIG = modules.config.loadconfig()
+
 ## SetupLogging
-logger = logging.getLogger("MainLogger")logger.setLevel(LOG_LEVEL)
-# Create Logging file
-handlerfh = logging.FileHandler(CONFIG['logging']['file'])fh.setLevel(LOG_LEVEL) logger.addHandler(fh)
+with open(CONFIG['logging']['file'], 'w'):
+    pass
+logging.basicConfig(
+    filename=CONFIG['logging']['file'],
+    format='%(asctime)s %(levelname)-8s %(message)s',
+    level=LOG_LEVEL,
+    datefmt='%Y-%m-%d %H:%M:%S')
+
 # Script
-logger.info("Setup finished - Starting script")
+logging.info("Setup finished - Starting script")
+## Get API Data
+APIDATA = []
+season = "2023"
+### FOOTBALL API
+APIDATA.append(modules.api.football.loaddata(CONFIG['api']['football']['properties']['league'], season, CONFIG['api']['football']['url'], CONFIG['api']['football']['key']))
+### NBA API
+APIDATA.append(modules.api.nba.loaddata(season, CONFIG['api']['nba']['url'], CONFIG['api']['nba']['key']))
+print(APIDATA)
