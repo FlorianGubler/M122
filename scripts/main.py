@@ -17,7 +17,6 @@ CONFIG = modules.config.loadconfig()
 ## SetupLogging
 with open(CONFIG['logging']['file'], 'w'):
     pass
-
 logging.basicConfig(
     filename=CONFIG['logging']['file'],
     format='%(asctime)s %(levelname)-8s %(message)s',
