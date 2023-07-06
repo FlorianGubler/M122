@@ -32,12 +32,17 @@ def send_email(config, pdfTmpFile, SMTPpassword):
        smtp_server.sendmail(config['mail']['from'], config['mail']['to'], msg.as_string())
        logging.info("Mail sent succesfully")
 
-def configureErrorMailHandler(config, smtpPassword):
-    logger = logging.getLogger()
-    logger.addHandler(logging.handlers.SMTPHandler(
-        mailhost=(config['host'], config['port']),
-        credentials=(config['mail']['from'], smtpPassword),
-        secure=(ssl.create_default_context()),
-        fromaddr=config['mail']['from'],
-        toaddrs=config['mail']['to'],
-        subject="Error in sport report script"))
+def handleErrorMail(config, excString, smtpPassword):
+    logging.info("Sending error mail")
+    # Create Multipart Message
+    with open(config['errormail']['template'], "r") as errormailtemplate:
+        msg = MIMEText(mailtemplate.read().replace("%%EXCEPTION%%", excString), 'html')
+    # Set Details
+    msg['Subject'] = config['errormail']['subject']
+    msg['From'] = config['user']
+    msg['To'] = config['errormail']['to']
+    # Send Mail
+    with smtplib.SMTP_SSL(config['host'], config['port']) as smtp_server:
+       smtp_server.login(config['user'], SMTPpassword)
+       smtp_server.sendmail(config['user'], config['mail']['to'], msg.as_string())
+       logging.info("Erromail sent succesfully")
