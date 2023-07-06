@@ -2,11 +2,11 @@ logging:
   file: logs/m122.log
 api:
   nba:
-    url: https://api-nba-v1.p.rapidapi.com/players/statistics
-    host: api-nba-v1.p.rapidapi.com
+    url: https://basketball-data.p.rapidapi.com/tournament/leaderboard/point
+    properties:
+      tournamentId: 1
   football:
     url: https://api-football-v1.p.rapidapi.com/v3/players/topscorers
-    host: api-football-v1.p.rapidapi.com
     properties:
       league: 2
 smtp:
