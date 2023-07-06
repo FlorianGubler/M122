@@ -1,6 +1,8 @@
 import pdfkit
+import logging
 
 def generatePDFReport(CONFIG, APIDATA):
+    logging.info("Generating PDF Report from Data")
     with open(CONFIG['template'], "r") as file:
         content = file.read()
 
@@ -16,3 +18,4 @@ def generatePDFReport(CONFIG, APIDATA):
 
         # Generate PDF
         pdfkit.from_string(content, CONFIG['tmpfile'])
+        logging.info("Generated PDF Report in '" + CONFIG['tmpfile'] + "'")

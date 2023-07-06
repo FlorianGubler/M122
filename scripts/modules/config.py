@@ -1,4 +1,5 @@
 import yaml
+import logging
 
 CONFIG_PATH = "./config/config.yaml"
 CRED_CONFIG_PATH = "../../cred.yml"
@@ -8,4 +9,5 @@ def loadconfig():
         config = yaml.safe_load(stream)
         with open(CRED_CONFIG_PATH, "r") as cred_stream:
             config["cred"] = yaml.safe_load(cred_stream)
-            return config
+    logging.info("Loaded config from '" + CONFIG_PATH + "'")
+    return config

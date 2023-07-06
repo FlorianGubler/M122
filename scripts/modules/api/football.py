@@ -2,6 +2,7 @@ import requests
 import logging
 
 def loaddata(config, season, apikey):
+  logging.info("Loading Football Data")
   querystring = {"league":config['properties']['league'],"season":season}
   headers = {
     "X-RapidAPI-Key": apikey

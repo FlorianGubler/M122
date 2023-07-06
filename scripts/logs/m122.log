@@ -1,7 +1,0 @@
-2023-07-06 08:00:05 INFO     Setup finished - Starting script
-2023-07-06 08:00:05 INFO     Loading Football Data
-2023-07-06 08:00:05 INFO     Called Football API succesfully
-2023-07-06 08:00:05 INFO     Loading NBA Data
-2023-07-06 08:00:06 INFO     Called NBA API succesfully
-2023-07-06 08:00:06 INFO     Generating PDF Report
-2023-07-06 08:00:06 INFO     Sending mail to customer

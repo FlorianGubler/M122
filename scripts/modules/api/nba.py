@@ -2,6 +2,7 @@ import requests
 import logging
 
 def loaddata(config, apikey):
+  logging.info("Loading NBA Data")
   querystring = {"tournamentId":config['properties']['tournamentId']}
   headers = {
     "X-RapidAPI-Key": apikey
