@@ -4,15 +4,14 @@ from email.mime.base import MIMEBase
 from email import encoders
 from email.mime.multipart import MIMEMultipart
 import logging
-import logging.handlers
-import ssl
+import traceback
 
 def send_email(config, pdfTmpFile, SMTPpassword):
     logging.info("Sending mail")
     # Create Multipart Message
     msg = MIMEMultipart()
     msg['Subject'] = config['mail']['subject']
-    msg['From'] = config['mail']['from']
+    msg['From'] = config['duser']
     msg['To'] = config['mail']['to']
     # Create File Part
     with open(pdfTmpFile, 'rb') as attachement:
@@ -28,15 +27,15 @@ def send_email(config, pdfTmpFile, SMTPpassword):
     msg.attach(file_part)
     # Send Mail
     with smtplib.SMTP_SSL(config['host'], config['port']) as smtp_server:
-       smtp_server.login(config['mail']['from'], SMTPpassword)
-       smtp_server.sendmail(config['mail']['from'], config['mail']['to'], msg.as_string())
+       smtp_server.login(config['user'], SMTPpassword)
+       smtp_server.sendmail(config['user'], config['mail']['to'], msg.as_string())
        logging.info("Mail sent succesfully")
 
-def send_error_email(config, excString, smtpPassword):
+def send_error_email(config, exception, SMTPpassword):
     logging.info("Sending error mail")
     # Create Multipart Message
     with open(config['errormail']['template'], "r") as errormailtemplate:
-        msg = MIMEText(mailtemplate.read().replace("%%EXCEPTION%%", excString), 'html')
+        msg = MIMEText(errormailtemplate.read().replace("%%EXCEPTION%%", ''.join(traceback.TracebackException.from_exception(exception).format())), 'html')
     # Set Details
     msg['Subject'] = config['errormail']['subject']
     msg['From'] = config['user']

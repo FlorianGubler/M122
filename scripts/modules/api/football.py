@@ -11,6 +11,5 @@ def loaddata(config, season, apikey):
   if response.status_code == 200:
     logging.info("Called Football API succesfully")
     return response.json()
-  else:
-    logging.error("Football API Call failed - Response: '" + response.text + "'") 
+  else: 
     raise Exception("Football API Call failed (StatusCode: " + str(response.status_code) + ")")

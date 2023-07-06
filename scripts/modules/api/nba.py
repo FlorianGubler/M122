@@ -12,5 +12,4 @@ def loaddata(config, apikey):
     logging.info("Called NBA API succesfully")
     return response.json()
   else:
-    logging.error("NBA API Call failed - Response: '" + response.text + "'")
-    raise Exception("NBA API Call failed (StatusCode: " + str(response.status_code) + ")")
+    raise Exception("NBA API Call failed (StatusCode: " + str(response.status_code) + "), with Response: '" + response.text + "'")

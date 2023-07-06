@@ -39,6 +39,6 @@ try:
     modules.mail.manageMail.send_email(CONFIG['smtp'], CONFIG['pdf']['tmpfile'], CONFIG['cred']['mail']['password'])
     ### Send Report via FTP to Server
     modules.ftp.sendFTP.send_ftp(CONFIG['ftp'], CONFIG['pdf']['tmpfile'], CONFIG['cred']['ftp']['password'])
-except Exception, e:
-    logging.error("An Exception occured: " + str(e))
-    modules.mail.manageMail.send_error_email(CONFIG['smtp'], str(e), CONFIG['cred']['mail']['password'])
+except Exception as e:
+    logging.error("An Exception occured: " + ''.join(traceback.TracebackException.from_exception(e).format()))
+    modules.mail.manageMail.send_error_email(CONFIG['smtp'], e, CONFIG['cred']['mail']['password'])
