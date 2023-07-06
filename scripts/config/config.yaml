@@ -8,7 +8,7 @@ api:
     url: https://api-football-v1.p.rapidapi.com/v3/players/topscorers
     host: api-football-v1.p.rapidapi.com
     properties:
-      league: 39
+      league: 2
 smtp:
   host: smtp.gmail.com
   user: test

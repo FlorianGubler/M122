@@ -1,4 +1,18 @@
 import pdfkit
 
-def generatePDFReport(input, output):
-    pdfkit.from_file(input, output)
+def generatePDFReport(input, output, APIDATA):
+    with open(input, "r") as file:
+        content = file.read()
+        
+        # Football
+        content = content.replace("%%FOOT_NAME%%", APIDATA[0]['response'][0]['player']['name'])
+        content = content.replace("%%FOOT_CLUB%%", APIDATA[0]['response'][0]['statistics'][0]['team']['name'])  
+        content = content.replace("%%FOOT_COUNT%%", str(APIDATA[0]['response'][0]['statistics'][0]['goals']['total']))  
+
+        # NBA
+        #content = content.replace("%%NBA_NAME%%", APIDATA[0].response[0].player.name)  
+        #content = content.replace("%%NBA_CLUB%%", APIDATA[0].response[0].player.name)  
+        #content = content.replace("%%NBA_COUNT%%", APIDATA[0].response[0].player.name)  
+        
+        # Generate PDF
+        pdfkit.from_string(content, output)

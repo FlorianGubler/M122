@@ -27,9 +27,9 @@ logging.info("Setup finished - Starting script")
 APIDATA = []
 season = "2023"
 ### FOOTBALL API
-#APIDATA.append(modules.api.football.loaddata(CONFIG['api']['football']['properties']['league'], season, CONFIG['api']['football']['url'], CONFIG['api']['football']['host'], CONFIG['cred']['apikeys']['football']))
+APIDATA.append(modules.api.football.loaddata(CONFIG['api']['football']['properties']['league'], season, CONFIG['api']['football']['url'], CONFIG['api']['football']['host'], CONFIG['cred']['apikeys']['football']))
 ### NBA API
 APIDATA.append(modules.api.nba.loaddata(season, CONFIG['api']['nba']['url'], CONFIG['api']['nba']['host'], CONFIG['cred']['apikeys']['nba']))
-
 ### Generate PDF Report
-modules.pdf.reportPDF.generatePDFReport(CONFIG['pdf']['template'], CONFIG['pdf']['tmpfile']);
+modules.pdf.reportPDF.generatePDFReport(CONFIG['pdf']['template'], CONFIG['pdf']['tmpfile'], APIDATA);
+
