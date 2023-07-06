@@ -23,7 +23,6 @@ logging.basicConfig(
     format='%(asctime)s %(levelname)-8s %(message)s',
     level=LOG_LEVEL,
     datefmt='%Y-%m-%d %H:%M:%S')
-modules.mail.manageMail.configureErrorMailHandler(CONFIG['smtp'], CONFIG['cred']['mail']['password'])
 # Script
 logging.info("Setup finished - Starting script")
 ## Get API Data
