@@ -5,6 +5,7 @@ import modules.api.nba
 import modules.api.football
 import modules.pdf.reportPDF
 import modules.mail.sendMail
+import datetime
 
 # Variables
 LOG_LEVEL = logging.INFO
@@ -28,7 +29,7 @@ logging.info("Setup finished - Starting script")
 APIDATA = []
 season = "2023"
 ### FOOTBALL API
-APIDATA.append(modules.api.football.loaddata(CONFIG['api']['football'], season, CONFIG['cred']['apikeys']['football']))
+APIDATA.append(modules.api.football.loaddata(CONFIG['api']['football'], datetime.date.today().year, CONFIG['cred']['apikeys']['football']))
 ### NBA API
 APIDATA.append(modules.api.nba.loaddata(CONFIG['api']['nba'], CONFIG['cred']['apikeys']['nba']))
 ### Generate PDF Report
