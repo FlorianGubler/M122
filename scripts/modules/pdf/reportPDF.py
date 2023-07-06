@@ -18,4 +18,4 @@ def generatePDFReport(CONFIG, APIDATA):
 
         # Generate PDF
         pdfkit.from_string(content, CONFIG['tmpfile'])
-        logging.info("Generated PDF Report in '" + CONFIG['tmpfile'] + "'")
+        logging.info("Generated PDF Report succesfully to '" + CONFIG['tmpfile'] + "'")

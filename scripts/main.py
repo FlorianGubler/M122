@@ -1,11 +1,11 @@
 #!/usr/bin/python3
-import logging
 import modules.config
 import modules.api.nba
 import modules.api.football
 import modules.pdf.reportPDF
 import modules.mail.sendMail
 import datetime
+import logging
 
 # Variables
 LOG_LEVEL = logging.INFO
