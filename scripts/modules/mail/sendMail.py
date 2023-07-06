@@ -6,20 +6,21 @@ from email import encoders
 from email.mime.multipart import MIMEMultipart
 
 def send_email(config, pdfTmpFile, SMTPpassword):
+    # Create Multipart Message
+    msg = MIMEMultipart()
+    msg['Subject'] = config['mail']['subject']
+    msg['From'] = config['mail']['from']
+    msg['To'] = config['mail']['to']
     # Create File Part
     with open(pdfTmpFile, 'rb') as attachement:
         file_part = MIMEBase("application", "octet-stream")
         file_part.set_payload(attachement.read())
         encoders.encode_base64(file_part)
         file_part.add_header("Content-Disposition", "attachement; filename=report.pdf")
-    # Create Multipart Message
-    msg = MIMEMultipart()
-    msg['Subject'] = config['mail']['subject']
-    msg['From'] = config['mail']['from']
-    msg['To'] = config['mail']['to']
-    # Add File and HTML Part
+    # Create HTML Part from Template
     with open(config['mail']['template'], "r") as mailtemplate:
         html_part = MIMEText(mailtemplate.read(), 'html')
+    # Attach parts to multipart message
     msg.attach(html_part)
     msg.attach(file_part)
     # Send Mail
