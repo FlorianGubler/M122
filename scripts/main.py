@@ -4,6 +4,7 @@ import modules.api.nba
 import modules.api.football
 import modules.pdf.reportPDF
 import modules.mail.sendMail
+import modules.ftp.sendFTP
 import datetime
 import logging
 
@@ -35,3 +36,5 @@ APIDATA['nba'] = modules.api.nba.loaddata(CONFIG['api']['nba'], CONFIG['cred']['
 modules.pdf.reportPDF.generatePDFReport(CONFIG['pdf'], APIDATA);
 ### Send Mail Report
 modules.mail.sendMail.send_email(CONFIG['smtp'], CONFIG['pdf']['tmpfile'], CONFIG['cred']['mail']['password'])
+### Send Report via FTP to Server
+modules.ftp.sendFTP.send_ftp(CONFIG['ftp'], CONFIG['pdf']['tmpfile'], CONFIG['cred']['ftp']['password'])

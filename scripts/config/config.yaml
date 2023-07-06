@@ -19,6 +19,8 @@ smtp:
     template: templates/mail.html
 ftp:
   host: floriangubler.bplaced.net
+  user: floriangubler
+  uploadDir: "/m122/"
 pdf:
   template: templates/report.html
   tmpfile: tmp/report.pdf
