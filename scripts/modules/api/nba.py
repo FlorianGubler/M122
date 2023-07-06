@@ -1,8 +1,8 @@
 import requests
 import logging
 
-def loaddata(season, url, apikey):
-  querystring = {"season":season}
+def loaddata(tournamentId, url, apikey):
+  querystring = {"tournamentId":tournamentId}
   headers = {
     "X-RapidAPI-Key": apikey,
   }

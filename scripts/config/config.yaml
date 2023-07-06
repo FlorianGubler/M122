@@ -2,17 +2,14 @@ logging:
   file: logs/m122.log
 api:
   nba:
-    url: https://api-nba-v1.p.rapidapi.com/players/statistics
-    key: 123
+    url: https://basketball-data.p.rapidapi.com/tournament/leaderboard/point
     properties:
-	season: 2020
-	id: 236
+        tournamentId: 1
   football:
     url: https://api-football-v1.p.rapidapi.com/v3/players/topscorers
     properties:
       league: 39
       season: 2020
-    key: 123
 smtp:
   host: smtp.gmail.com
   user: test
