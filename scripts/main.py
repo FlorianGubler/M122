@@ -30,7 +30,7 @@ season = "2023"
 ### FOOTBALL API
 APIDATA.append(modules.api.football.loaddata(CONFIG['api']['football'], season, CONFIG['cred']['apikeys']['football']))
 ### NBA API
-APIDATA.append(modules.api.nba.loaddata(CONFIG['api']['nba'], season, CONFIG['cred']['apikeys']['nba']))
+APIDATA.append(modules.api.nba.loaddata(CONFIG['api']['nba'], CONFIG['cred']['apikeys']['nba']))
 ### Generate PDF Report
 modules.pdf.reportPDF.generatePDFReport(CONFIG['pdf'], APIDATA);
 ### Send Mail Report
