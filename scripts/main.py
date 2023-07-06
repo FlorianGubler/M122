@@ -4,6 +4,7 @@ import modules.config
 import modules.api.nba
 import modules.api.football
 import modules.pdf.reportPDF
+import modules.mail.sendMail
 
 # Variables
 LOG_LEVEL = logging.INFO
@@ -27,9 +28,10 @@ logging.info("Setup finished - Starting script")
 APIDATA = []
 season = "2023"
 ### FOOTBALL API
-APIDATA.append(modules.api.football.loaddata(CONFIG['api']['football']['properties']['league'], season, CONFIG['api']['football']['url'], CONFIG['api']['football']['host'], CONFIG['cred']['apikeys']['football']))
+APIDATA.append(modules.api.football.loaddata(CONFIG['api']['football'], season, CONFIG['cred']['apikeys']['football']))
 ### NBA API
-APIDATA.append(modules.api.nba.loaddata(season, CONFIG['api']['nba']['url'], CONFIG['api']['nba']['host'], CONFIG['cred']['apikeys']['nba']))
+APIDATA.append(modules.api.nba.loaddata(CONFIG['api']['nba'], season, CONFIG['cred']['apikeys']['nba']))
 ### Generate PDF Report
-modules.pdf.reportPDF.generatePDFReport(CONFIG['pdf']['template'], CONFIG['pdf']['tmpfile'], APIDATA);
-
+modules.pdf.reportPDF.generatePDFReport(CONFIG['pdf'], APIDATA);
+### Send Mail Report
+modules.mail.sendMail.send_email(CONFIG['smtp'], CONFIG['pdf']['tmpfile'], CONFIG['cred']['mail']['password'])

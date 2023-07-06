@@ -1,13 +1,13 @@
 import requests
 import logging
 
-def loaddata(league, season, url, host, apikey):
-  querystring = {"league":league,"season":season}
+def loaddata(config, season, apikey):
+  querystring = {"league":config['properties']['league'],"season":season}
   headers = {
     "X-RapidAPI-Key": apikey,
-    "X-RapidAPI-Host": host
+    "X-RapidAPI-Host": config['host']
   }
-  response = requests.get(url, headers=headers, params=querystring)
+  response = requests.get(config['url'], headers=headers, params=querystring)
   if response.status_code == 200:
     logging.info("Called Football API succesfully")
     return response.json()

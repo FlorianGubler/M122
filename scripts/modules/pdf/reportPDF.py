@@ -1,7 +1,7 @@
 import pdfkit
 
-def generatePDFReport(input, output, APIDATA):
-    with open(input, "r") as file:
+def generatePDFReport(CONFIG, APIDATA):
+    with open(CONFIG['template'], "r") as file:
         content = file.read()
         
         # Football
@@ -15,4 +15,4 @@ def generatePDFReport(input, output, APIDATA):
         #content = content.replace("%%NBA_COUNT%%", APIDATA[0].response[0].player.name)  
         
         # Generate PDF
-        pdfkit.from_string(content, output)
+        pdfkit.from_string(content, CONFIG['tmpfile'])
