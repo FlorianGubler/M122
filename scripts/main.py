@@ -26,13 +26,16 @@ logging.basicConfig(
 # Script
 logging.info("Setup finished - Starting script")
 ## Get API Data
-APIDATA = []
-season = "2023"
+APIDATA = {}
 ### FOOTBALL API
-APIDATA.append(modules.api.football.loaddata(CONFIG['api']['football'], datetime.date.today().year, CONFIG['cred']['apikeys']['football']))
+logging.info("Loading Football Data")
+APIDATA['football'] = modules.api.football.loaddata(CONFIG['api']['football'], datetime.date.today().year, CONFIG['cred']['apikeys']['football'])
 ### NBA API
-APIDATA.append(modules.api.nba.loaddata(CONFIG['api']['nba'], CONFIG['cred']['apikeys']['nba']))
+logging.info("Loading NBA Data")
+APIDATA['nba'] = modules.api.nba.loaddata(CONFIG['api']['nba'], CONFIG['cred']['apikeys']['nba'])
 ### Generate PDF Report
+logging.info("Generating PDF Report")
 modules.pdf.reportPDF.generatePDFReport(CONFIG['pdf'], APIDATA);
 ### Send Mail Report
+logging.info("Sending mail to customer")
 modules.mail.sendMail.send_email(CONFIG['smtp'], CONFIG['pdf']['tmpfile'], CONFIG['cred']['mail']['password'])

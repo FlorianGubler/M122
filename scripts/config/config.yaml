@@ -14,7 +14,7 @@ smtp:
   port: 465
   mail: 
     from: m122.testmail@gmail.com
-    to: gubler.florian@gmx.net, romer.laurent@gmail.com
+    to: gubler.florian@gmx.net,romer.laurent@gmail.com
     subject: New Sport Report (M122)
     template: templates/mail.html
 ftp:
