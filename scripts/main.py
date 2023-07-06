@@ -3,7 +3,7 @@ import modules.config
 import modules.api.nba
 import modules.api.football
 import modules.pdf.reportPDF
-import modules.mail.sendMail
+import modules.mail.manageMail
 import modules.ftp.sendFTP
 import datetime
 import logging
@@ -23,7 +23,7 @@ logging.basicConfig(
     format='%(asctime)s %(levelname)-8s %(message)s',
     level=LOG_LEVEL,
     datefmt='%Y-%m-%d %H:%M:%S')
-
+modules.mail.manageMail.configureErrorMailHandler(CONFIG['smtp'], CONFIG['cred']['mail']['password'])
 # Script
 logging.info("Setup finished - Starting script")
 ## Get API Data
@@ -35,6 +35,6 @@ APIDATA['nba'] = modules.api.nba.loaddata(CONFIG['api']['nba'], CONFIG['cred']['
 ### Generate PDF Report
 modules.pdf.reportPDF.generatePDFReport(CONFIG['pdf'], APIDATA);
 ### Send Mail Report
-modules.mail.sendMail.send_email(CONFIG['smtp'], CONFIG['pdf']['tmpfile'], CONFIG['cred']['mail']['password'])
+modules.mail.manageMail.send_email(CONFIG['smtp'], CONFIG['pdf']['tmpfile'], CONFIG['cred']['mail']['password'])
 ### Send Report via FTP to Server
 modules.ftp.sendFTP.send_ftp(CONFIG['ftp'], CONFIG['pdf']['tmpfile'], CONFIG['cred']['ftp']['password'])

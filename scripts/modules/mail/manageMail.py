@@ -4,6 +4,8 @@ from email.mime.base import MIMEBase
 from email import encoders
 from email.mime.multipart import MIMEMultipart
 import logging
+import logging.handlers
+import ssl
 
 def send_email(config, pdfTmpFile, SMTPpassword):
     logging.info("Sending mail")
@@ -29,3 +31,13 @@ def send_email(config, pdfTmpFile, SMTPpassword):
        smtp_server.login(config['mail']['from'], SMTPpassword)
        smtp_server.sendmail(config['mail']['from'], config['mail']['to'], msg.as_string())
        logging.info("Mail sent succesfully")
+
+def configureErrorMailHandler(config, smtpPassword):
+    logger = logging.getLogger()
+    logger.addHandler(logging.handlers.SMTPHandler(
+        mailhost=(config['host'], config['port']),
+        credentials=(config['mail']['from'], smtpPassword),
+        secure=(ssl.create_default_context()),
+        fromaddr=config['mail']['from'],
+        toaddrs=config['mail']['to'],
+        subject="Error in sport report script"))
