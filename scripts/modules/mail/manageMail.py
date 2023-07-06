@@ -32,7 +32,7 @@ def send_email(config, pdfTmpFile, SMTPpassword):
        smtp_server.sendmail(config['mail']['from'], config['mail']['to'], msg.as_string())
        logging.info("Mail sent succesfully")
 
-def handleErrorMail(config, excString, smtpPassword):
+def send_error_email(config, excString, smtpPassword):
     logging.info("Sending error mail")
     # Create Multipart Message
     with open(config['errormail']['template'], "r") as errormailtemplate:
