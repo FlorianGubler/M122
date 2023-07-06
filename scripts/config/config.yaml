@@ -12,11 +12,15 @@ api:
 smtp:
   host: smtp.gmail.com
   port: 465
-  mail: 
-    from: m122.testmail@gmail.com
-    to: gubler.florian@gmx.net,romer.laurent@gmail.com
+  user: m122.testmail@gmail.com
+  mail:
+    to: gubler.florian@gmx.net
     subject: New Sport Report (M122)
     template: templates/mail.html
+  errormail:
+    to: gubler.florian@gmx.net
+    subject: Error in Sport Report Script
+    template: templates/errormail.html
 ftp:
   host: floriangubler.bplaced.net
   user: floriangubler
