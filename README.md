@@ -74,38 +74,29 @@ If you sometime want to run the script manually and don't wait another week, you
 If your a developer or it administrator, it is helpful to underestand, how this sript works. In case of a bug or you want to develop an extra feature, you know how to integrate it into this script. The script has following structure:
 ```
 src/
-├── config
-│   └── config.yaml                                                                                                                                                     
-├── logs
-│   ├── m122.log                                                                                                                                                        
-│   └── m122_
-├── main.py
-├── modules
-│   ├── __pycache__
-│   │   └── config.cpython-38.pyc                                                                                                                                       
-│   ├── api
-│   │   ├── __pycache__
-│   │   │   ├── football.cpython-38.pyc                                                                                                                                 
-│   │   │   └── nba.cpython-38.pyc                                                                                                                                      
-│   │   ├── football.py                                                                                                                                                 
-│   │   └── nba.py                                                                                                                                                      
-│   ├── config.py                                                                                                                                                       
-│   ├── ftp
-│   │   ├── __pycache__
-│   │   │   └── sendFTP.cpython-38.pyc                                                                                                                                  
-│   │   └── sendFTP.py                                                                                                                                                  
-│   ├── mail
-│   │   ├── __pycache__
-│   │   │   └── manageMail.cpython-38.pyc                                                                                                                               
-│   │   └── manageMail.py                                                                                                                                               
-│   └── pdf
-│       ├── __pycache__
-│       │   └── reportPDF.cpython-38.pyc                                                                                                                                
-│       └── reportPDF.py                                                                                                                                                
-├── templates
-│   ├── errormail.html                                                                                                                                                  
-│   ├── mail.html                                                                                                                                                       
-│   └── report.html                                                                                                                                                     
-└── tmp
-    └── report.pdf   
+├── config -> Contains config.yml with the complete script configuration
+├── logs -> The logs folder containing m122.log (Script log) and m122_cron.log (Cronjob Log)
+├── main.py -> The main script itself
+├── modules -> Contains all custom modules for the script 
+├── templates -> Contains 3 Templates: mail.html (The report mail), errormail.html (The error mail) and report.html (The pdf template for the report)
+└── tmp -> The tmp folder for the script (PDF Report will be stored temporarly be stored there)
+```
+The configuration file for the credentials is not in the repository folder, but one layer on top as file <code>cred.yml</code>.
+### Logging and errorhandling
+The logging is configured globaly to write into the logging file. You just have to use the logging module with <code>logging.info() | logging.error() | ...</code>. You can specify the Log Level in main.yml with the Variable <code>LOG_LEVEL</code>. Errors are catched from the main process in the main.yml File and will be logged and sent as an error mail. 
+
+### Current modules
+Currently the following modules, are develeoped:
+```
+src/modules/
+├── api                --> The modules for the sport apis, to load the data
+│   ├── football.py    --> * The football api module
+│   └── nba.py         --> * The nba api modules
+├── config.py          --> The module to load the config file of the script
+├── ftp                --> The module to handle FTP report sending
+│   └── sendFTP.py
+├── mail               --> The module to handle Mail report and error sending
+│   └── manageMail.py
+└── pdf                --> The module to handle the pdf generation
+    └── reportPDF.py
 ```
