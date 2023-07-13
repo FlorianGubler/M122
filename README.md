@@ -6,7 +6,7 @@ For installation, the complete Repository 'M122' has to be cloned / downloaded, 
 cd M122/
 git checkout florian
 ```
-After that, we need to specify the credentials, the script can use. For that we need to create a <code>cred.yml</code> file out of the repository directory. The file needs to be one layer on top of this directory:
+After that, we need to specify the credentials, the script can use. For that we need to create a <code>cred.yml</code> file out of the repository directory. The file needs to be one layer on top of the installation directory:
 ```
 .
 ├── M122
@@ -21,7 +21,7 @@ You can do this using these commands:
 cd ../
 touch cred.yml
 ```
-Now, of course, you also need to specify the credentials in the file. The file structure should look as following (For using our servers, make an email to gubler.florian@gmx.net to request the credentials):
+Now, of course, you also need to specify the credentials in the file. The file structure should look as following (For using our configurationa and servers, send an email to gubler.florian@gmx.net to request the credentials):
 ```yaml
 apikeys:
   nba: "xxx"
@@ -44,6 +44,7 @@ After that we have to install the required python and system libraries. To use t
 - smtplib <i>(Mostly default installed)</i>
 - logging <i>(Mostly default installed)</i>
 - time / datetime <i>(Mostly default installed)</i>
+
 Lastly we have to install the weekly cronjob. Using following command, you can see the configured cronjobs.
 ```bash
 crontab -e
@@ -61,7 +62,7 @@ MAILTO=<YOUR-IT-ADMIN-EMAIL>
 If your an enduser of this script, you usally don't have to do much. The sport report script is sheduled and runs every week, to get you updated. The standard mail sender of the script configured is m122.testmail@gmail.com. If you want to configure something else, just like the receivers of the script, the subject, etc. The configuration file is located in <code>src/config/config.yml</code>.
 <br>
 ### Errormail
-If you receive an error mail, that something in the script went wrong, please contact you IT administrator. Such mail has the subject 'Error in Sport Report Script' and contains some additional info from the error. 
+If you receive an error mail, that something in the script went wrong, please contact your IT administrator. Such mail has the subject 'Error in Sport Report Script' and contains some additional info from the error. 
 <br>
 ### Start the script manually
 If you sometime want to run the script manually and don't wait another week, you can do this just by calling the following:
@@ -78,7 +79,7 @@ src/
 ├── logs -> The logs folder containing m122.log (Script log) and m122_cron.log (Cronjob Log)
 ├── main.py -> The main script itself
 ├── modules -> Contains all custom modules for the script 
-├── templates -> Contains 3 Templates: mail.html (The report mail), errormail.html (The error mail) and report.html (The pdf template for the report)
+├── templates -> Contains 3 Templates: 2 for the report- & errormail and a template for the PDF report
 └── tmp -> The tmp folder for the script (PDF Report will be stored temporarly be stored there)
 ```
 The configuration file for the credentials is not in the repository folder, but one layer on top as file <code>cred.yml</code>.
