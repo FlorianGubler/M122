@@ -19,9 +19,8 @@ CONFIG = modules.config.loadconfig()
 ## Create required folders exist
 requiredDirs = CONFIG['required']['dirs']
 for dir in requiredDirs:
-  print(dir)
   if not os.path.exists(dir):
-    os.mkdirs(dir)
+    os.makedirs(dir)
 
 ## SetupLogging
 logging.basicConfig(
