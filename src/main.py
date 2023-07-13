@@ -7,6 +7,7 @@ import modules.mail.manageMail
 import modules.ftp.sendFTP
 import datetime
 import logging
+import os
 
 # Variables
 LOG_LEVEL = logging.INFO
@@ -21,7 +22,13 @@ logging.basicConfig(
     format='%(asctime)s %(levelname)-8s %(message)s',
     level=LOG_LEVEL,
     datefmt='%Y-%m-%d %H:%M:%S')
- 
+## Create required folders exist
+requiredDirs = CONFIG['required']['dirs']
+for dir in requiredDirs:
+  print(dir)
+  if not os.path.exists(dir):
+    os.mkdirs(dir)
+
 ## SCRIPT
 try:
     logging.info("Setup finished - Starting script")

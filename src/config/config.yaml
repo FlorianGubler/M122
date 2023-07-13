@@ -1,3 +1,7 @@
+required:
+  dirs:
+    - logs
+    - tmp
 logging:
   file: logs/m122.log
 api:
