@@ -2,7 +2,6 @@
 import logging
 import modules.config
 import modules.api.nba
-import modules.api.football
 
 # Variables
 LOG_LEVEL = logging.INFO
@@ -24,9 +23,6 @@ logging.basicConfig(
 logging.info("Setup finished - Starting script")
 ## Get API Data
 APIDATA = []
-season = "2023"
-### FOOTBALL API
-### APIDATA.append(modules.api.football.loaddata(CONFIG['api']['football']['properties']['league'], CONFIG['api']['football']['properties']['season'], CONFIG['api']['football']['url'], CONFIG['cred']['apikeys']['football']))
-### NBA API
+### BASKETBALL API
 APIDATA.append(modules.api.nba.loaddata(CONFIG['api']['nba']['properties']['tournamentId'], CONFIG['api']['nba']['url'], CONFIG['cred']['apikeys']['nba']))
 print(APIDATA)
