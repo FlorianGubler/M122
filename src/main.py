@@ -16,14 +16,12 @@ LOG_LEVEL = logging.INFO
 CONFIG = modules.config.loadconfig()
 
 ## SetupLogging
-with open(CONFIG['logging']['file'], 'w'):
-    pass
 logging.basicConfig(
     filename=CONFIG['logging']['file'],
     format='%(asctime)s %(levelname)-8s %(message)s',
     level=LOG_LEVEL,
     datefmt='%Y-%m-%d %H:%M:%S')
-    
+ 
 ## SCRIPT
 try:
     logging.info("Setup finished - Starting script")
