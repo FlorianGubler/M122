@@ -44,7 +44,17 @@ MAILTO=<YOUR-IT-ADMIN-EMAIL>
 
 :exclamation: If your using a different config, than the main one you have to specify this in the file <code>src/config/config.yml</code>.
 <br>
-
 ## Instruction manual for endusers
+If your an enduser of this script, you usally don't have to do much. The sport report script is sheduled and runs every week, to get you updated. The standard mail sender of the script configured is <code>m122.testmail@gmail.com</code>. If you want to configure something else, just like the receivers of the script, the subject, etc. The configuration file is located in <code>src/config/config.yml</code>.
+<br>
+### Errormail
+If you receive an error mail, that something in the script went wrong, please contact you IT administrator. Such mail has the subject 'Error in Sport Report Script' and contains some additional info from the error. 
+<br>
+### Start the script manually
+If you sometime want to run the script manually and don't wait another week, you can do this just by calling the following:
+```bash
+./src/main.yml
+```
+<br>
 
 ## Docs for developers
