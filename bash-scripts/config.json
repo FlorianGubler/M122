@@ -1,0 +1,85 @@
+{
+
+  "logging": {
+
+    "file": "logs/m122.log"
+
+  },
+
+  "api": {
+
+    "nba": {
+
+      "url": "https://basketball-data.p.rapidapi.com/tournament/leaderboard/point?tournamentId=1",
+
+      "properties": {
+
+        "tournamentId": 1
+
+      }
+
+    },
+
+    "football": {
+
+      "url": "https://api-football-v1.p.rapidapi.com/v3/players/topscorers",
+
+      "properties": {
+
+        "league": 2
+
+      }
+
+    }
+
+  },
+
+  "smtp": {
+
+    "host": "smtp.gmail.com",
+
+    "port": 465,
+
+    "user": "m122.testmail@gmail.com",
+
+    "mail": {
+
+      "to": "gubler.florian@gmx.net",
+
+      "subject": "New Sport Report (M122)",
+
+      "template": "templates/mail.html"
+
+    },
+
+    "errormail": {
+
+      "to": "gubler.florian@gmx.net",
+
+      "subject": "Error in Sport Report Script",
+
+      "template": "templates/errormail.html"
+
+    }
+
+  },
+
+  "ftp": {
+
+    "host": "floriangubler.bplaced.net",
+
+    "user": "floriangubler",
+
+    "uploadDir": "/m122/"
+
+  },
+
+  "pdf": {
+
+    "template": "templates/report.html",
+
+    "tmpfile": "tmp/report.pdf"
+
+  }
+
+}
