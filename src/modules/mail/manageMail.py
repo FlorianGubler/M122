@@ -11,7 +11,7 @@ def send_email(config, pdfTmpFile, SMTPpassword):
     # Create Multipart Message
     msg = MIMEMultipart()
     msg['Subject'] = config['mail']['subject']
-    msg['From'] = config['duser']
+    msg['From'] = config['user']
     msg['To'] = config['mail']['to']
     # Create File Part
     with open(pdfTmpFile, 'rb') as attachement:
