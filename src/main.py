@@ -16,18 +16,19 @@ LOG_LEVEL = logging.INFO
 ## LoadConfig
 CONFIG = modules.config.loadconfig()
 
-## SetupLogging
-logging.basicConfig(
-    filename=CONFIG['logging']['file'],
-    format='%(asctime)s %(levelname)-8s %(message)s',
-    level=LOG_LEVEL,
-    datefmt='%Y-%m-%d %H:%M:%S')
 ## Create required folders exist
 requiredDirs = CONFIG['required']['dirs']
 for dir in requiredDirs:
   print(dir)
   if not os.path.exists(dir):
     os.mkdirs(dir)
+
+## SetupLogging
+logging.basicConfig(
+    filename=CONFIG['logging']['file'],
+    format='%(asctime)s %(levelname)-8s %(message)s',
+    level=LOG_LEVEL,
+    datefmt='%Y-%m-%d %H:%M:%S')
 
 ## SCRIPT
 try:
