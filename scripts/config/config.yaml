@@ -1,26 +1,38 @@
+# The logging configuration
 logging:
   file: logs/m122.log
+# The API Endpoint configurations
 api:
+  # The NBA API Config
   nba:
+    # The NBA API Endpoint
     url: https://basketball-data.p.rapidapi.com/tournament/leaderboard/point
+    # Static NBA API Properties
     properties:
       tournamentId: 1
+  # The Football API Config
   football:
+    # The Football API Endpoint
     url: https://api-football-v1.p.rapidapi.com/v3/players/topscorers
+    # Static Football API Properties
     properties:
       league: 2
+# The SMTP Server configuration
 smtp:
   host: smtp.gmail.com
   port: 465
   user: m122.testmail@gmail.com
+  # The configuration for the report mail
   mail:
     to: gubler.florian@gmx.net
     subject: New Sport Report (M122)
     template: templates/mail.html
+  # The configuration for the error mail
   errormail:
     to: gubler.florian@gmx.net
     subject: Error in Sport Report Script
     template: templates/errormail.html
+# The FTP Configuration
 ftp:
   host: floriangubler.bplaced.net
   user: floriangubler
